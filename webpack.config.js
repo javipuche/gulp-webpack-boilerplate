@@ -1,0 +1,135 @@
+const path                 = require('path');
+const UglifyJSPlugin       = require('uglifyjs-webpack-plugin');
+const merge                = require('webpack-merge');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const isProduction         = process.argv.indexOf('--production') >= 0;
+
+
+/* -----------------------------------------------------------------------------
+ * Common Config
+ */
+
+let common = {
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: 'assets/js/app.js',
+        publicPath: '/'
+    },
+    resolve: {
+        extensions: ['*', '.js', '.json', '.scss'],
+        alias: {
+            node_modules: path.join(__dirname, 'node_modules'),
+            images: path.join(__dirname, 'src/assets/images'),
+        }
+    },
+    module: {
+        rules: [{
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+            },
+            {
+                test: /\.(css|scss)$/,
+                use: [
+                    'style-loader',
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {
+                             minimize: isProduction
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: (loader) => [
+                                require('autoprefixer')({
+                                    browsers: 'last 2 versions, not IE <= 11'
+                                }),
+                                require('css-mqpacker')()
+                            ]
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            includePaths: [
+                              path.resolve(__dirname, './src/assets/scss'),
+                            ],
+                        }
+                    }
+
+                ]
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                exclude: /(a-z A-Z 0-9)*\/(font?s)\//,
+                use: [{
+                        loader: 'file-loader',
+                        options: {
+                            name: 'assets/images/[name].[ext]'
+                        },
+                    },
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            bypassOnDebug: true,
+                        },
+                    },
+                ],
+            },
+            {
+                test: /\.(eot|ttf|svg|woff|woff2)$/i,
+                exclude: /(a-z A-Z 0-9)*\/(img|image?s)\//,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: 'assets/fonts/[name].[ext]'
+                    },
+                }],
+            },
+        ],
+    },
+    plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'assets/css/app.css'
+        })
+    ]
+};
+
+
+
+/* -----------------------------------------------------------------------------
+ * Dev Config
+ */
+
+if (!isProduction) {
+    module.exports = merge(common, {
+        mode: 'development',
+        devtool: 'inline-source-map'
+    });
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Prod Config
+ */
+
+if (isProduction) {
+    module.exports = merge(common, {
+        mode: 'production',
+        optimization: {
+            minimizer: [
+                new UglifyJSPlugin({
+                    parallel: true,
+                    uglifyOptions: {
+                        output: {
+                            comments: false
+                        }
+                    }
+                })
+            ],
+        }
+    });
+}

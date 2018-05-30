@@ -1,0 +1,34 @@
+/* -----------------------------------------------------------------------------
+ * SPACES
+ */
+
+
+:root {
+  --space-xs   : 8px;
+  --space-s    : 16px;
+  --space-m    : 24px;
+  --space-l    : 32px;
+  --space-xl   : 40px;
+  --space-xxl  : 48px;
+  --space-xxxl : 56px;
+  --space-h    : 64px;
+  --space-xh   : 72px;
+  --space-xxh  : 80px;
+  --space-xxxh : 88px;
+}
+
+// Map
+
+$f-spaces: (
+  'xs'   : var(--space-xs),
+  's'    : var(--space-s),
+  'm'    : var(--space-m),
+  'l'    : var(--space-l),
+  'xl'   : var(--space-xl),
+  'xxl'  : var(--space-xxl),
+  'xxxl' : var(--space-xxxl),
+  'h'    : var(--space-h),
+  'xh'   : var(--space-xh),
+  'xxh'  : var(--space-xxh),
+  'xxxh' : var(--space-xxxh)
+) !default;

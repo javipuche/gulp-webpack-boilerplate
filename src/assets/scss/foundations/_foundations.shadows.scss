@@ -1,0 +1,18 @@
+/* -----------------------------------------------------------------------------
+ * SHADOWS
+ */
+
+
+:root {
+  --shadow-distant : 0 2px 8px rgba(0,0,0, .05);
+  --shadow-close   : 0 1px 2px 0 rgba(0,0,0, .15);
+  --shadow-subtle  : 0 0 1px 1px rgba(0,0,0, .15);
+}
+
+// Map
+
+$f-shadows: (
+  'distant' : var(--shadow-distant),
+  'close'   : var(--shadow-close),
+  'subtle'  : var(--shadow-subtle)
+) !default;

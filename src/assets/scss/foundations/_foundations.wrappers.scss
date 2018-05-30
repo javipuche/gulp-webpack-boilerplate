@@ -1,0 +1,24 @@
+/* -----------------------------------------------------------------------------
+ * WRAPPERS
+ */
+
+
+:root {
+  --wrapper-xs  : 300px;
+  --wrapper-s   : 600px;
+  --wrapper-m   : 800px;
+  --wrapper-l   : 1200px;
+  --wrapper-xl  : 1400px;
+  --wrapper-xxl : 1600px;
+}
+
+// Map
+
+$f-wrappers: (
+  xs  : var(--wrapper-xs),
+  s   : var(--wrapper-s),
+  m   : var(--wrapper-m),
+  l   : var(--wrapper-l),
+  xl  : var(--wrapper-xl),
+  xxl : var(--wrapper-xxl)
+) !default;

@@ -3,28 +3,35 @@
  */
 
 
-// Main font sizes
+:root {
+  --font-size-xxs  : 10px;
+  --font-size-xs   : 12px;
+  --font-size-s    : 14px;
+  --font-size-m    : 16px;
+  --font-size-l    : 18px;
+  --font-size-xl   : 22px;
+  --font-size-xxl  : 26px;
+  --font-size-xxxl : 28px;
+  --font-size-h    : 30px;
 
-$f-font-size-xxs: 10px !default;
-$f-font-size-xs: 12px !default;
-$f-font-size-s: 14px !default;
-$f-font-size-m: 16px !default;
-$f-font-size-l: 18px !default;
-$f-font-size-xl: 24px !default;
-$f-font-size-xxl: 32px !default;
-$f-font-size-xxxl: 40px !default;
-$f-font-size-h: 48px !default;
+  @include breakpoint(s) {
+    --font-size-xl   : 24px;
+    --font-size-xxl  : 32px;
+    --font-size-xxxl : 40px;
+    --font-size-h    : 48px;
+  }
+}
 
-// Font sizes map
+// Map
 
 $f-font-sizes: (
-  "xxs": $f-font-size-xxs,
-  "xs": $f-font-size-xs,
-  "s": $f-font-size-s,
-  "m": $f-font-size-m,
-  "l": $f-font-size-l,
-  "xl": $f-font-size-xl,
-  "xxl": $f-font-size-xxl,
-  "xxxl": $f-font-size-xxxl,
-  "h": $f-font-size-h,
+  xxs  : var(--font-size-xxs),
+  xs   : var(--font-size-xs),
+  s    : var(--font-size-s),
+  m    : var(--font-size-m),
+  l    : var(--font-size-l),
+  xl   : var(--font-size-xl),
+  xxl  : var(--font-size-xxl),
+  xxxl : var(--font-size-xxxl),
+  h    : var(--font-size-h)
 ) !default;

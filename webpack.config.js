@@ -20,10 +20,13 @@ let common = {
         alias: {
             node_modules: path.join(__dirname, 'node_modules'),
             images: path.join(__dirname, 'src/assets/images'),
+            fonts: path.join(__dirname, 'src/assets/fonts'),
+            modules: path.join(__dirname, 'src/assets/js/modules'),
         }
     },
     module: {
-        rules: [{
+        rules: [
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
@@ -45,7 +48,7 @@ let common = {
                             ident: 'postcss',
                             plugins: (loader) => [
                                 require('autoprefixer')({
-                                    browsers: 'last 2 versions, not IE <= 11'
+                                    browsers: '> 5%'
                                 }),
                                 require('css-mqpacker')()
                             ]

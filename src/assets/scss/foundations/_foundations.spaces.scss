@@ -3,32 +3,32 @@
  */
 
 
-// Main space
+:root {
+  --space-xs   : 8px;
+  --space-s    : 16px;
+  --space-m    : 24px;
+  --space-l    : 32px;
+  --space-xl   : 40px;
+  --space-xxl  : 48px;
+  --space-xxxl : 56px;
+  --space-h    : 64px;
+  --space-xh   : 72px;
+  --space-xxh  : 80px;
+  --space-xxxh : 88px;
+}
 
-$f-space: 8px !default;
-
-// Space variants
-
-$f-space-none: 0 !default;
-$f-space-xs: $f-space !default;
-$f-space-s: round($f-space * 2) !default;
-$f-space-m: round($f-space * 3) !default;
-$f-space-l: round($f-space * 4) !default;
-$f-space-xl: round($f-space * 6) !default;
-$f-space-xxl: round($f-space * 8) !default;
-$f-space-xxxl: round($f-space * 10) !default;
-$f-space-h: round($f-space * 12) !default;
-
-// Spaces map
+// Map
 
 $f-spaces: (
-  "none": $f-space-none,
-  "xs": $f-space-xs,
-  "s": $f-space-s,
-  "m": $f-space-m,
-  "l": $f-space-l,
-  "xl": $f-space-xl,
-  "xxl": $f-space-xxl,
-  "xxxl": $f-space-xxxl,
-  "h": $f-space-h,
+  'xs'   : var(--space-xs),
+  's'    : var(--space-s),
+  'm'    : var(--space-m),
+  'l'    : var(--space-l),
+  'xl'   : var(--space-xl),
+  'xxl'  : var(--space-xxl),
+  'xxxl' : var(--space-xxxl),
+  'h'    : var(--space-h),
+  'xh'   : var(--space-xh),
+  'xxh'  : var(--space-xxh),
+  'xxxh' : var(--space-xxxh)
 ) !default;

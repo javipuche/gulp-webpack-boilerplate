@@ -9,6 +9,7 @@ const nunjucksRender    = require('gulp-nunjucks-render');
 const imagemin          = require('gulp-imagemin');
 const plumber           = require('gulp-plumber');
 const htmlbeautify      = require('gulp-html-beautify');
+const htmlmin           = require('gulp-htmlmin');
 const GulpMem           = require('gulp-mem');
 const data              = require('gulp-data');
 const notifier          = require('node-notifier');
@@ -116,9 +117,11 @@ let nunjucks = function () {
             wait: false
         });
     }))
+    .pipe(htmlmin({collapseWhitespace: true}))
     .pipe(gulpif(isProduction, htmlbeautify({
-        preserve_newlines: true,
+        preserve_newlines: false,
         max_preserve_newlines: 0,
+        unformatted: [],
         editorconfig: true
     })))
     .pipe(gulpType.dest('./dist'))
@@ -160,24 +163,24 @@ let webpackAssets = function () {
 // Move images to dist and optimize
 let images = function () {
     return gulp.src('./src/assets/images/**/*.{gif,png,jpg,jpeg,svg}')
-        .pipe(gulpif(isProduction || isWatching, imagemin({
-            progressive: true
-        })))
-        .pipe(gulpType.dest('./dist/assets/images/'));
+    .pipe(gulpif(isProduction || isWatching, imagemin({
+        progressive: true
+    })))
+    .pipe(gulpType.dest('./dist/assets/images/'));
 };
 
 
 // Move fonts to dist
 let fonts = function () {
     return gulp.src('./src/assets/fonts/**/*.{eot,ttf,svg,woff,woff2}')
-        .pipe(gulpType.dest('./dist/assets/fonts'));
+    .pipe(gulpType.dest('./dist/assets/fonts'));
 };
 
 
 // Move icons to dist
-let icons = function () {
-    return gulp.src('./src/assets/icons/**/*.{svg}')
-        .pipe(gulpType.dest('./dist/assets/icons'));
+let staticFolder = function () {
+    return gulp.src('./src/static/**/*')
+    .pipe(gulpType.dest('./dist/static'));
 };
 
 
@@ -203,7 +206,7 @@ let watch = function () {
         ]).on('all', nunjucks);
         gulp.watch('./src/assets/fonts/**/*.{eot,ttf,svg,woff,woff2}').on('all', gulp.series(fonts, reloadBrowser));
         gulp.watch('./src/assets/images/**/*.{gif,png,jpg,jpeg,svg}').on('all', gulp.series(images, reloadBrowser));
-        gulp.watch('./src/assets/images/**/*.{svg}').on('all', gulp.series(icons, reloadBrowser));
+        gulp.watch('./src/static/**/*').on('all', gulp.series(staticFolder, reloadBrowser));
     }
 };
 
@@ -212,5 +215,5 @@ let watch = function () {
  * Tasks
  */
 
-gulp.task('build', gulp.series(cleanDist, gulp.parallel(nunjucks, images, fonts, icons, webpackAssets)));
+gulp.task('build', gulp.series(cleanDist, gulp.parallel(nunjucks, images, fonts, staticFolder, webpackAssets)));
 gulp.task('default', gulp.series('build'));

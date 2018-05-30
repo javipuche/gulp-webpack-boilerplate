@@ -3,24 +3,18 @@
  */
 
 
-// Main radius
+:root {
+  --radius-s      : 4px;
+  --radius-m      : 8px;
+  --radius-l      : 12px;
+  --radius-circle : 50%;
+}
 
-$f-radius: 8px !default;
-
-// Radius variants
-
-$f-radius-none: 0 !default;
-$f-radius-s: round($f-radius * .5) !default;
-$f-radius-m: round($f-radius * 1) !default;
-$f-radius-l: round($f-radius * 2) !default;
-$f-radius-circle: 50% !default;
-
-// Radiuses  map
+// Map
 
 $f-radiuses: (
-  "none": $f-radius-none,
-  "s": $f-radius-s,
-  "m": $f-radius-m,
-  "l": $f-radius-l,
-  "circle": $f-radius-circle,
+  s      : var(--radius-s),
+  m      : var(--radius-m),
+  l      : var(--radius-l),
+  circle : var(--radius-circle)
 ) !default;

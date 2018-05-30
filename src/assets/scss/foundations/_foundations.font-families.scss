@@ -3,14 +3,14 @@
  */
 
 
-// Main font families
+:root {
+  --font-family-primary   : Arial;
+  --font-family-secondary : Georgia;
+}
 
-$f-font-family-primary: Arial !default;
-$f-font-family-secondary: Georgia !default;
-
-// Font families map
+// Map
 
 $f-font-families: (
-  "primary": $f-font-family-primary,
-  "secondary": $f-font-family-secondary
+  'primary'   : var(--font-family-primary),
+  'secondary' : var(--font-family-secondary)
 ) !default;

@@ -8,7 +8,7 @@
 
 // Toggling
 
-$u-display-enabled: true !default;
+$u-display-enabled: false !default;
 
 // Clases
 
@@ -20,7 +20,7 @@ $u-display-classes: (
 
 // Breakpoints
 
-$u-display-breakpoints-enabled: true !default;
+$u-display-breakpoints-enabled: false !default;
 $u-display-breakpoints: $f-mq-breakpoints !default;
 
 

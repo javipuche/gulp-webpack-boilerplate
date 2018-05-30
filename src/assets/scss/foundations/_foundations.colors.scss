@@ -1,19 +1,36 @@
 /* -----------------------------------------------------------------------------
- * COLORS
+ * COLORS BRAND
  */
 
 
-// Import colors files
-// -----------------------------------------------------------------------------
-
-@import "foundations.colors-brand";
-@import "foundations.colors-neutral";
-
+:root {
+  --color-primary   : #91bce7;
+  --color-secondary : #91e4e7;
+  --color-shade-0   : #FFFFFF;
+  --color-shade-100 : #F8F9F9;
+  --color-shade-200 : #EDEFF0;
+  --color-shade-300 : #E2E4E6;
+  --color-shade-400 : #D6DADC;
+  --color-shade-500 : #838C91;
+  --color-shade-600 : #676D70;
+  --color-shade-700 : #333333;
+  --color-shade-800 : #222222;
+  --color-shade-900 : #000000;
+}
 
 // Map
-// -----------------------------------------------------------------------------
 
 $f-colors: (
-  "brand": $f-colors-brand,
-  "neutral": $f-colors-neutral,
+  'primary'   : var(--color-primary),
+  'secondary' : var(--color-secondary),
+  'shade-0'   : var(--color-shade-0),
+  'shade-100' : var(--color-shade-100),
+  'shade-200' : var(--color-shade-200),
+  'shade-300' : var(--color-shade-300),
+  'shade-400' : var(--color-shade-400),
+  'shade-500' : var(--color-shade-500),
+  'shade-600' : var(--color-shade-600),
+  'shade-700' : var(--color-shade-700),
+  'shade-800' : var(--color-shade-800),
+  'shade-900' : var(--color-shade-900)
 ) !default;

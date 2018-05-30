@@ -8,7 +8,7 @@
 
 // Toggling
 
-$u-margin-enabled: true !default;
+$u-margin-enabled: false !default;
 
 // Spaces
 
@@ -44,7 +44,7 @@ $u-margin-classes: (
 
 // Breakpoints
 
-$u-margin-breakpoints-enabled: true !default;
+$u-margin-breakpoints-enabled: false !default;
 $u-margin-breakpoints: $f-mq-breakpoints !default;
 
 

@@ -20,8 +20,8 @@ $o-wrappers-modifiers-enabled: true !default;
 
 // Breakpoints
 
-$o-wrappers-breakpoints-enabled: true !default;
-$o-wrappers-modifiers-breakpoints-enabled: true !default;
+$o-wrappers-breakpoints-enabled: false !default;
+$o-wrappers-modifiers-breakpoints-enabled: false !default;
 $o-wrappers-breakpoints: $f-mq-breakpoints !default;
 
 

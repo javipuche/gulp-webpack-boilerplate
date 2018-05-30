@@ -8,7 +8,7 @@
 
 // Toggling
 
-$u-flex-enabled: true !default;
+$u-flex-enabled: false !default;
 
 // Clases
 
@@ -42,7 +42,7 @@ $u-flex-classes: (
 
 // Breakpoints
 
-$u-flex-breakpoints-enabled: true !default;
+$u-flex-breakpoints-enabled: false !default;
 $u-flex-breakpoints: $f-mq-breakpoints !default;
 
 

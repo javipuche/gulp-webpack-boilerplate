@@ -8,7 +8,7 @@
 
 // Toggling
 
-$u-padding-enabled: true !default;
+$u-padding-enabled: false !default;
 
 // Spaces
 
@@ -44,7 +44,7 @@ $u-padding-classes: (
 
 // Breakpoints
 
-$u-padding-breakpoints-enabled: true !default;
+$u-padding-breakpoints-enabled: false !default;
 $u-padding-breakpoints: $f-mq-breakpoints !default;
 
 

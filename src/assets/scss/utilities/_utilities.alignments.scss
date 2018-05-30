@@ -8,7 +8,7 @@
 
 // Toggling
 
-$u-align-enabled: true !default;
+$u-align-enabled: false !default;
 
 // Properties
 
@@ -16,7 +16,7 @@ $u-align-alignments: (left, center, right) !default;
 
 // Breakpoints
 
-$u-align-breakpoints-enabled: true !default;
+$u-align-breakpoints-enabled: false !default;
 $u-align-breakpoints: $f-mq-breakpoints !default;
 
 

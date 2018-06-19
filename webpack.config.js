@@ -19,6 +19,11 @@ let common = {
         extensions: ['*', '.js', '.json', '.scss'],
         alias: {
             node_modules: path.join(__dirname, 'node_modules'),
+            layouts: path.join(__dirname, 'src/layouts'),
+            pages: path.join(__dirname, 'src/pages'),
+            partials: path.join(__dirname, 'src/partials'),
+            components: path.join(__dirname, 'src/components'),
+            static: path.join(__dirname, 'src/static'),
             images: path.join(__dirname, 'src/assets/images'),
             fonts: path.join(__dirname, 'src/assets/fonts'),
             modules: path.join(__dirname, 'src/assets/js/modules'),

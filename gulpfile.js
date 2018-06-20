@@ -202,6 +202,7 @@ let watch = function () {
             './src/layouts/**/*.{njk,htm,html}',
             './src/pages/**/*.{njk,htm,html}',
             './src/partials/**/*.{njk,htm,html}',
+            './src/components/**/*.{njk,htm,html}',
             './src/data/**/*.json'
         ]).on('all', nunjucks);
         gulp.watch('./src/assets/fonts/**/*.{eot,ttf,svg,woff,woff2}').on('all', gulp.series(fonts, reloadBrowser));

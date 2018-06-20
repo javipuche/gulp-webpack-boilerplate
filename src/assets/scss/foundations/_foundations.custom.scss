@@ -1,0 +1,26 @@
+/* -----------------------------------------------------------------------------
+ * CUSTOM
+ */
+
+
+:root {
+
+  /* Basics
+   * -------------------------------------------------------------------------- */
+
+  --font-family : var(--font-family-primary);
+  --font-size   : var(--font-size-m);
+  --line-height : var(--line-height-m);
+
+
+  /* Spaces
+   * -------------------------------------------------------------------------- */
+
+  --space-between-sections : var(--space-xxxl);
+  --space-tags-cms         : var(--space-m);
+
+  @include breakpoint(s) {
+    --space-between-sections: var(--space-xxxh);
+  }
+
+}

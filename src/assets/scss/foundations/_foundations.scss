@@ -5,9 +5,13 @@
 
 @import "foundations.spaces";
 @import "foundations.breakpoints";
-@import "foundations.font-sizes";
 @import "foundations.font-families";
+@import "foundations.font-sizes";
+@import "foundations.line-heights";
 @import "foundations.colors";
 @import "foundations.radiuses";
 @import "foundations.shadows";
 @import "foundations.wrappers";
+
+// Always lastest
+@import "foundations.custom";

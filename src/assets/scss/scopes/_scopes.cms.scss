@@ -1,0 +1,15 @@
+/* -----------------------------------------------------------------------------
+ * CMS
+ */
+
+
+.s-cms {
+  blockquote,
+  h1, h2, h3, h4, h5, h6,
+  iframe, img, p, picture,
+  table, video, figure {
+    &:not(:last-child) {
+      margin-bottom: var(--space-tags-cms);
+    }
+  }
+}

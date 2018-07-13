@@ -4,7 +4,6 @@
 
 
 @import "foundations.spaces";
-@import "foundations.breakpoints";
 @import "foundations.font-families";
 @import "foundations.font-sizes";
 @import "foundations.line-heights";
@@ -15,3 +14,15 @@
 
 // Always lastest
 @import "foundations.custom";
+
+:root {
+  @include f-spaces;
+  @include f-font-families;
+  @include f-font-sizes;
+  @include f-line-heights;
+  @include f-colors;
+  @include f-radiuses;
+  @include f-shadows;
+  @include f-wrappers;
+  @include f-custom;
+}

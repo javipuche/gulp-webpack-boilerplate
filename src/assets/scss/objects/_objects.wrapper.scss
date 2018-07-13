@@ -22,7 +22,7 @@ $o-wrappers-modifiers-enabled: true !default;
 
 $o-wrappers-breakpoints-enabled: false !default;
 $o-wrappers-modifiers-breakpoints-enabled: false !default;
-$o-wrappers-breakpoints: $f-mq-breakpoints !default;
+$o-wrappers-breakpoints: $s-mq-breakpoints !default;
 
 
 // Mixins
@@ -32,6 +32,8 @@ $o-wrappers-breakpoints: $f-mq-breakpoints !default;
   margin-right: auto;
   margin-left: auto;
   width: 100%;
+  padding-left: var(--space-gutter-wrapper);
+  padding-right: var(--space-gutter-wrapper);
 }
 
 

@@ -3,7 +3,7 @@
  */
 
 
-:root {
+@mixin f-wrappers {
   --wrapper-xs  : 300px;
   --wrapper-s   : 600px;
   --wrapper-m   : 800px;
@@ -11,6 +11,7 @@
   --wrapper-xl  : 1400px;
   --wrapper-xxl : 1600px;
 }
+
 
 // Map
 

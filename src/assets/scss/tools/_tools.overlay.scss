@@ -1,0 +1,23 @@
+/* -----------------------------------------------------------------------------
+ * OVERLAY
+ */
+
+
+@mixin overlay($pseudo-element: 'after', $z-index: 2, $bg-color: false) {
+  &::#{$pseudo-element} {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: $z-index;
+
+    @if $bg-color {
+      background-color: $bg-color;
+    } @else {
+      background-color: var(--bg-color-overlay, rgba(0,0,0, .5));
+    }
+  }
+}

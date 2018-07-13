@@ -3,7 +3,7 @@
  */
 
 
-:root {
+@mixin f-font-sizes {
   --font-size-xxs  : 10px;
   --font-size-xs   : 12px;
   --font-size-s    : 14px;
@@ -21,6 +21,7 @@
     --font-size-h    : 48px;
   }
 }
+
 
 // Map
 

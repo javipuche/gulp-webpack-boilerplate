@@ -3,10 +3,11 @@
  */
 
 
-:root {
+@mixin f-font-families {
   --font-family-primary   : Arial;
   --font-family-secondary : Georgia;
 }
+
 
 // Map
 

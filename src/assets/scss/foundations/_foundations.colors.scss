@@ -3,7 +3,7 @@
  */
 
 
-:root {
+@mixin f-colors {
   --color-primary   : #91bce7;
   --color-secondary : #91e4e7;
   --color-shade-0   : #FFFFFF;
@@ -17,6 +17,7 @@
   --color-shade-800 : #222222;
   --color-shade-900 : #000000;
 }
+
 
 // Map
 

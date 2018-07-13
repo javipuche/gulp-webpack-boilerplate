@@ -55,7 +55,9 @@ let common = {
                                 require('autoprefixer')({
                                     browsers: '> 5%'
                                 }),
-                                require('css-mqpacker')()
+                                require('css-mqpacker')({
+                                    sort: true
+                                })
                             ]
                         }
                     },

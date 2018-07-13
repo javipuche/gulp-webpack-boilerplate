@@ -3,10 +3,9 @@
  */
 
 
-:root {
-
+@mixin f-custom {
   /* Basics
-   * -------------------------------------------------------------------------- */
+   * ------------------------------------------------------------------------ */
 
   --font-family : var(--font-family-primary);
   --font-size   : var(--font-size-m);
@@ -14,13 +13,19 @@
 
 
   /* Spaces
-   * -------------------------------------------------------------------------- */
+   * ------------------------------------------------------------------------ */
 
   --space-between-sections : var(--space-xxxl);
   --space-tags-cms         : var(--space-m);
+  --space-gutter-wrapper   : var(--space-m);
 
   @include breakpoint(s) {
     --space-between-sections: var(--space-xxxh);
   }
 
+
+  /* Overlays
+   * ------------------------------------------------------------------------ */
+
+  --bg-color-overlay: rgba(0,0,0, .5);
 }

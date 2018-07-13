@@ -3,7 +3,7 @@
  */
 
 
-:root {
+@mixin f-spaces {
   --space-xs   : 8px;
   --space-s    : 16px;
   --space-m    : 24px;
@@ -16,6 +16,7 @@
   --space-xxh  : 80px;
   --space-xxxh : 88px;
 }
+
 
 // Map
 

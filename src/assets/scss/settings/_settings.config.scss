@@ -3,6 +3,28 @@
  */
 
 
+// Media type
+
+$s-mq-media-type: 'screen' !default;
+
+// Main breakpoint variables
+
+$s-mq-breakpoint-s   : 600px !default;
+$s-mq-breakpoint-m   : 900px !default;
+$s-mq-breakpoint-l   : 1200px !default;
+$s-mq-breakpoint-xl  : 1500px !default;
+$s-mq-breakpoint-xxl : 1800px !default;
+
+// Breakpoints map
+
+$s-mq-breakpoints: (
+  s   : $s-mq-breakpoint-s,
+  m   : $s-mq-breakpoint-m,
+  l   : $s-mq-breakpoint-l,
+  xl  : $s-mq-breakpoint-xl,
+  xxl : $s-mq-breakpoint-xxl
+) !default;
+
 // Special chars
 
 $s-config-breakpoint-separator: \@ !default;

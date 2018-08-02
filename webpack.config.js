@@ -44,13 +44,15 @@ let common = {
                     {
                         loader: 'css-loader',
                         options: {
-                             minimize: isProduction
+                            minimize: isProduction,
+                            sourceMap: !isProduction
                         }
                     },
                     {
                         loader: 'postcss-loader',
                         options: {
                             ident: 'postcss',
+                            sourceMap: !isProduction,
                             plugins: (loader) => [
                                 require('autoprefixer')({
                                     browsers: '> 5%'
@@ -64,6 +66,7 @@ let common = {
                     {
                         loader: 'sass-loader',
                         options: {
+                            sourceMap: !isProduction,
                             includePaths: [
                               path.resolve(__dirname, './src/assets/scss'),
                             ],
@@ -117,7 +120,7 @@ let common = {
 if (!isProduction) {
     module.exports = merge(common, {
         mode: 'development',
-        devtool: 'inline-source-map'
+        devtool: 'source-map'
     });
 }
 

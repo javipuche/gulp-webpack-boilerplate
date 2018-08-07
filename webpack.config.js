@@ -81,7 +81,9 @@ let common = {
                 use: [{
                         loader: 'file-loader',
                         options: {
-                            name: 'assets/images/[name].[ext]'
+                            name: '[name].[ext]',
+                            outputPath: 'assets/images',
+                            publicPath: '../images'
                         },
                     },
                     {
@@ -98,7 +100,9 @@ let common = {
                 use: [{
                     loader: 'file-loader',
                     options: {
-                        name: 'assets/fonts/[name].[ext]'
+                        name: '[name].[ext]',
+                        outputPath: 'assets/fonts',
+                        publicPath: '../fonts'
                     },
                 }],
             },

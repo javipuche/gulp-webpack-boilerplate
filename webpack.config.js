@@ -44,7 +44,6 @@ let common = {
                     {
                         loader: 'css-loader',
                         options: {
-                            minimize: isProduction,
                             sourceMap: !isProduction
                         }
                     },
@@ -67,6 +66,7 @@ let common = {
                         loader: 'sass-loader',
                         options: {
                             sourceMap: !isProduction,
+                            outputStyle: isProduction && 'compressed',
                             includePaths: [
                               path.resolve(__dirname, './src/assets/scss'),
                             ],

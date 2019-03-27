@@ -1,6 +1,4 @@
 const fs                = require('fs');
-const path              = require('path');
-const glob              = require("glob");
 const del               = require('del');
 const gulp              = require('gulp');
 const browserSync       = require('browser-sync');
@@ -8,16 +6,17 @@ const gulpif            = require('gulp-if');
 const nunjucksRender    = require('gulp-nunjucks-render');
 const imagemin          = require('gulp-imagemin');
 const plumber           = require('gulp-plumber');
-const htmlbeautify      = require('gulp-html-beautify');
+const htmlbeautify      = require('gulp-pretty-html');
 const htmlmin           = require('gulp-htmlmin');
 const GulpMem           = require('gulp-mem');
 const data              = require('gulp-data');
 const notifier          = require('node-notifier');
+const dirTree           = require("directory-tree");
 const webpack           = require('webpack');
 const webpackStream     = require('webpack-stream');
 const webpackConfigFile = require('./webpack.config.js');
 const isProduction      = process.argv.indexOf('--production') >= 0;
-const upServer          = process.argv.indexOf('--server') >= 0;
+const isServerUp        = process.argv.indexOf('--server') >= 0;
 const isWatching        = process.argv.indexOf('--watch') >= 0;
 
 
@@ -27,7 +26,7 @@ const isWatching        = process.argv.indexOf('--watch') >= 0;
 
 let gulpType;
 
-if (upServer) {
+if (isServerUp) {
     gulpType = new GulpMem();
     gulpType.serveBasePath = './dist';
 } else {
@@ -51,47 +50,33 @@ let reloadBrowser = function () {
 };
 
 
-// Get data for nunjucks
-let getDataFromFiles = function() {
-    let parsed = {};
-    let pathsFiles = glob.sync("./src/data/**/*.json");
-    let paths = [];
+// Generate Data Object
+let generateData = function (_array) {
+    let obj = {};
 
-    pathsFiles.map((item) => {
-        item = item.replace('./', '').replace('src', '');
-        paths.push(item);
+    _array.map((item) => {
+        if (item.type == 'directory') {
+            obj[item.name] = generateData(item.children);
+        } else {
+            obj[item.name.replace(/\.[^/.]+$/, "")] = JSON.parse(fs.readFileSync(item.path, 'utf8'));
+        }
     });
 
-    for(var i = 0; i < paths.length; i++) {
-        var position = parsed;
-        var split = paths[i].split('/');
-        for(var j = 0; j < split.length; j++) {
-            if(split[j] !== "") {
-                if (split[j].includes('.json')) {
-                    if (fs.readFileSync(path.join(__dirname, path.normalize('src/' + paths[i]))).length) {
-                        try {
-                            position[split[j].replace('.json', '')] = JSON.parse(fs.readFileSync(path.join(__dirname, path.normalize('src/' + paths[i]))));
-                        } catch(error) {
-                            return console.error(error.toString()),
-                            notifier.notify({
-                                title: 'Error in console',
-                                message: `${error.toString()}`,
-                                sound: true,
-                                wait: false
-                            });
-                        }
-                    }
-                } else {
-                    if(typeof position[split[j]] === 'undefined') {
-                        position[split[j]] = {};
-                    }
-                }
-                position = position[split[j]];
-            }
-        }
-    }
+    return obj;
+};
 
-    return JSON.parse(JSON.stringify(parsed));
+
+// Get data for nunjucks
+let getDataFromFiles = function() {
+    let obj = {};
+    let tree = dirTree('./src/data', {
+        normalizePath: true,
+        extensions: /\.(json)$/
+    });
+
+    obj[tree.name] = generateData(tree.children);
+
+    return obj;
 };
 
 
@@ -117,7 +102,7 @@ let nunjucks = function () {
             wait: false
         });
     }))
-    .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(gulpif(isProduction, htmlmin({collapseWhitespace: true})))
     .pipe(gulpif(isProduction, htmlbeautify({
         preserve_newlines: false,
         max_preserve_newlines: 0,
@@ -177,7 +162,7 @@ let fonts = function () {
 };
 
 
-// Move icons to dist
+// Move static files to dist
 let staticFolder = function () {
     return gulp.src('./src/static/**/*')
     .pipe(gulpType.dest('./dist/static'));
@@ -186,7 +171,7 @@ let staticFolder = function () {
 
 // Launch server
 let server = function () {
-    if (!isProduction && upServer) {
+    if (!isProduction && isServerUp) {
         browserSync.init({
             server: './dist/',
             middleware: gulpType.middleware,
@@ -216,5 +201,5 @@ let watch = function () {
  * Tasks
  */
 
-gulp.task('build', gulp.series(cleanDist, gulp.parallel(nunjucks, images, fonts, staticFolder, webpackAssets)));
+gulp.task('build', gulp.series(cleanDist, gulp.parallel(nunjucks, staticFolder, webpackAssets)));
 gulp.task('default', gulp.series('build'));

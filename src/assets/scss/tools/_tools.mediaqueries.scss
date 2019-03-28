@@ -17,7 +17,7 @@
     }
   }
 
-  @error 'El siguiente valor no está definido.';
+  @error 'Next value is not defined.';
 }
 
 // Type of breakpoint
@@ -36,7 +36,7 @@
   }
 
   @else {
-     @error "El breakpoint `#{$_value}` no existe. Crea uno nuevo, elige uno de estos: #{map-keys($s-mq-breakpoints)} o escribe un valor en pixeles.";
+     @error "Breakpoint `#{$_value}` doesn't exists. Create a new one, choose one of these: #{map-keys($s-mq-breakpoints)} or write a value in pixels.";
   }
 }
 
@@ -73,7 +73,7 @@
   }
 
   @else {
-     @error "El breakpoint no puede ser el mismo ni más pequeño. Ejemplo correcto: (small medium) o (544px 768px)";
+     @error "Breakpoint can't be the same or smaller. Correct example: (small medium) or (544px 768px)";
   }
 
   @return $_result;

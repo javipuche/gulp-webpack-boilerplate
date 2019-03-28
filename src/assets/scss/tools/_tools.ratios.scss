@@ -3,20 +3,20 @@
  */
 
 
-@mixin ratio($_ratio: 1) {
+@mixin ratio($_width: 1, $_height: 1) {
   position: relative;
 
   &::before {
     display: block;
     width: 100%;
-    padding-top: $_ratio * 100%;
+    padding-top: ($_height / $_width) * 100%;
     content: "";
   }
 }
 
-@mixin ratio-override($_ratio) {
+@mixin ratio-override($_width: 1, $_height: 1) {
   &::before {
-    padding-top: $_ratio * 100%;
+    padding-top: ($_height / $_width) * 100%;
   }
 }
 

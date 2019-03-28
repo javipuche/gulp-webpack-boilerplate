@@ -1,6 +1,6 @@
 {
   "name": "gulp-webpack-boilerplate",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "description": "Base para maquetar un nuevo proyecto web con Nunjucks, SCSS, JS usando Gulp y Webpack.",
   "main": "src/assets/js/app.js",
   "scripts": {

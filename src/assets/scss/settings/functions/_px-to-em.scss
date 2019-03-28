@@ -3,7 +3,7 @@
  */
 
 
-@function px-to-em($_value, $_baseline: $s-core-font-size) {
+@function px-to-em($_value, $_baseline: $s-config-font-size-base) {
   @if unit($_value) == 'em' {
     @return $_value;
   }

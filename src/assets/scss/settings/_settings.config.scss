@@ -3,6 +3,33 @@
  */
 
 
+/* -----------------------------------------------------------------------------
+ * Font size base for functions, etc. (not document font size)
+ */
+
+$s-config-font-size-base: 16px !default;
+
+
+/* -----------------------------------------------------------------------------
+ * Paths
+ */
+
+$s-config-path-fonts: '../fonts/';
+$s-config-path-images: '../images/';
+
+
+/* -----------------------------------------------------------------------------
+ * Special chars
+ */
+
+$s-config-breakpoint-separator: \@ !default;
+$s-config-aspect-ratio-separator: \: !default;
+
+
+/* -----------------------------------------------------------------------------
+ * Mediaqueries
+ */
+
 // Media type
 
 $s-mq-media-type: 'screen' !default;
@@ -24,8 +51,3 @@ $s-mq-breakpoints: (
   xl  : $s-mq-breakpoint-xl,
   xxl : $s-mq-breakpoint-xxl
 ) !default;
-
-// Special chars
-
-$s-config-breakpoint-separator: \@ !default;
-$s-config-aspect-ratio-separator: \: !default;
